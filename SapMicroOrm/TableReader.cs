@@ -237,7 +237,28 @@ namespace SapMicroOrm
                 }
 
                 //Get tresults
-                rfc.Invoke(_conn);
+                try
+                {
+                    rfc.Invoke(_conn);
+                }
+                catch (Exception e)
+                {
+                    if (e.Message == "FIELD_NOT_VALID")
+                    {
+                        throw new ArgumentException("A selected column isn't valid, check that all the selected columns are correctly written.");
+                    }
+                    else if(e.Message == "A dynamically specified column name is unknown.")
+                    {
+                        throw new ArgumentException("A column in the WHERE clause isn't correctly written or doesn't exist.");
+                    }
+                    else if (e.Message == "A condition specified dynamically has an unexpected format.")
+                    {
+                        throw new ArgumentException("There's a syntax error in the WHERE clause, please check.");
+                    }
+
+                    throw;
+                }
+
 
                 var rows = Enumerable.Empty<IRfcDataContainer>()
                     .Concat(rfc.GetTable("TBLOUT128"))

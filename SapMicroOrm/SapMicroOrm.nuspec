@@ -2,10 +2,10 @@
 <package >
   <metadata>
     <id>SapMicroOrm</id>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <title>SapMicroOrm</title>
-    <description>Sap micro orm</description>
-    <tags>SAP table read extract select orm POCO</tags>
+    <description>Fast, Simple, Typed table reader for SAP</description>
+    <tags>SAP table read reader extract select orm POCO</tags>
     <authors>Axel Marquez</authors>
     <owners>$author$</owners>
     <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
