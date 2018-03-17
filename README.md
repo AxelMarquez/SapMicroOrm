@@ -96,7 +96,7 @@ List<MARA> materials = sapConn
 ```
 List<MARA> materials = sapConn
     .From<MARA>()
-    .Where("MATNR = '33916'")
+    .Where("MATNR = '33916' OR MATNR LIKE '%abc%'")
     .SelectAllColumns();
 ```
 #### Joins
