@@ -30,11 +30,11 @@ Install-Package SapMicroOrm
 
 ## Getting started
 First reference SapMicroOrm in your code:
-```
+```csharp
 using SapMicroOrm;
 ```
 A table is mapped to a POCO, for this example lets create our POCO for MARA table:
-```
+```csharp
 public class MARA
 {
     public string MATNR { get; set; }
@@ -46,7 +46,7 @@ public class MARA
 ```
 
 Alternatively, a more readable version:
-```
+```csharp
 [Alias("MARA")]
 public class Material
 {
@@ -64,7 +64,7 @@ public class Material
 ```
         
 Now lets create our usual *RfcDestination* and retrieve some records:
-```
+```csharp
 var sapConn = RfcDestinationManager.GetDestination(...);
             
 List<MARA> materials = sapConn
@@ -80,20 +80,20 @@ Having trouble setting up your project? [Refer to this working solution example.
 
 ## More examples
 #### Retrieve all columns (SELECT * ...)
-```
+```csharp
 List<MARA> materials = sapConn
     .From<MARA>()
     .SelectAllColumns();
 ```
 #### Retrieve specific columns
-```
+```csharp
 List<MARA> materials = sapConn
     .From<MARA>()
     .Select("MATNR, MTART"); //You can pass an array of strings too
 ```
 **Note:** Properties not included in the select will have the initial value in the POCO.
 #### Add conditions (WHERE ...)
-```
+```csharp
 List<MARA> materials = sapConn
     .From<MARA>()
     .Where("MATNR = '33916' OR MATNR LIKE '%abc%'")
@@ -102,7 +102,7 @@ List<MARA> materials = sapConn
 #### Joins
 Unfortunately, SAP doesn’t provide a way to natively execute joins from a remote client. 
 We can simulate it in the following way:
-```
+```csharp
 List<MARA> materialHeaders = sapConn
     .From<MARA>()
     .SelectAllColumns();
@@ -113,14 +113,14 @@ List<MARC> materials = sapConn
     .SelectAllColumns();
 ```
 #### Order by
-```
+```csharp
 var materials = sapConn
     .From<MARA>()
     .SelectAllColumns()
     .OrderBy(m => m.MTART); // <- Standard LINQ OrderBy
 ```
 #### Group by
-```
+```csharp
 var materials = sapConn
     .From<MARA>()
     .SelectAllColumns()
@@ -128,7 +128,7 @@ var materials = sapConn
 ```
 #### Table and column alias
 If you want to have different names in your POCOs use *Alias*:
-```
+```csharp
 [Alias("MARA")]
 public class Material
 {
