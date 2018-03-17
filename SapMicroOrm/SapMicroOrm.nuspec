@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>SapMicroOrm</id>
+    <version>0.1.1</version>
+    <title>SapMicroOrm</title>
+    <description>Sap micro orm</description>
+    <tags>SAP table read extract select orm POCO</tags>
+    <authors>Axel Marquez</authors>
+    <owners>$author$</owners>
+    <licenseUrl>https://opensource.org/licenses/MIT</licenseUrl>
+    <projectUrl>https://github.com/AxelMarquez/SapMicroOrm</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <copyright>Copyright 2018</copyright>
+  </metadata>
+</package>
